@@ -1,0 +1,11 @@
+docker run -d --restart unless-stopped \
+  --name anna_and_dads \
+  -p 19132:19132/udp \
+  -p 19133:19133/udp \
+  -v $(pwd)/server.properties:/bedrock/server.properties \
+  -v $(pwd)/permissions.json:/bedrock/permissions.json \
+  -v $(pwd)/whitelist.json:/bedrock/whitelist.json \
+  -e BEDROCK_IN_DOCKER_RESTART_TIME_UTC="03:00" \
+  -v anna_and_dads-worlds:/bedrock/worlds \
+  -v anna_and_dads-backups:/backups \
+  mjlawson-minecraft-docker:2021-12-17
